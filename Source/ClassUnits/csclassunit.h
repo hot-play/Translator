@@ -1,5 +1,6 @@
-#ifndef CPPCLASSUNIT_H
-#define CPPCLASSUNIT_H
+#ifndef CSCLASSUNIT_H
+#define CSCLASSUNIT_H
+
 
 #include<Source/ClassUnits/classunit.h>
 
@@ -47,4 +48,4 @@ private:
     std::vector< Fields > m_fields;
 };
 
-#endif // CPPCLASSUNIT_H
+#endif // CSCLASSUNIT_H

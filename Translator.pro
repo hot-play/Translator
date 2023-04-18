@@ -18,16 +18,28 @@ SOURCES += main.cpp \
     Source/unit.cpp \
     Source/ClassUnits/classunit.cpp \
     Source/ClassUnits/cppclassunit.cpp \
+    Source/ClassUnits/csclassunit.cpp \
+    Source/ClassUnits/javaclassunit.cpp \
     Source/MethodUnits/methodunit.cpp \
     Source/MethodUnits/cppmethodunit.cpp \
+    Source/MethodUnits/csmethodunit.cpp \
+    Source/MethodUnits/javamethodunit.cpp \
     Source/PrintOperatorUnits/printoperatorunit.cpp \
-    Source/PrintOperatorUnits/cppprintoperatorunit.cpp
+    Source/PrintOperatorUnits/cppprintoperatorunit.cpp \
+    Source/PrintOperatorUnits/csprintoperatorunit.cpp \
+    Source/PrintOperatorUnits/javaprintoperatorunit.cpp
 
 HEADERS += \
     Source/unit.h \
     Source/ClassUnits/classunit.h \
     Source/ClassUnits/cppclassunit.h \
+    Source/ClassUnits/csclassunit.h \
+    Source/ClassUnits/javaclassunit.h \
     Source/MethodUnits/methodunit.h \
     Source/MethodUnits/cppmethodunit.h \
+    Source/MethodUnits/csmethodunit.h \
+    Source/MethodUnits/javamethodunit.h
     Source/PrintOperatorUnits/printoperatorunit.h \
-    Source/PrintOperatorUnits/cppprintoperatorunit.h
+    Source/PrintOperatorUnits/cppprintoperatorunit.h \
+    Source/PrintOperatorUnits/csprintoperatorunit.h \
+    Source/PrintOperatorUnits/javaprintoperatorunit.h \
