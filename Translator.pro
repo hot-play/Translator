@@ -14,4 +14,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Source/unit.cpp \
+    Source/ClassUnits/classunit.cpp \
+    Source/ClassUnits/cppclassunit.cpp \
+    Source/MethodUnits/methodunit.cpp \
+    Source/MethodUnits/cppmethodunit.cpp \
+    Source/PrintOperatorUnits/printoperatorunit.cpp \
+    Source/PrintOperatorUnits/cppprintoperatorunit.cpp
+
+HEADERS += \
+    Source/unit.h \
+    Source/ClassUnits/classunit.h \
+    Source/ClassUnits/cppclassunit.h \
+    Source/MethodUnits/methodunit.h \
+    Source/MethodUnits/cppmethodunit.h \
+    Source/PrintOperatorUnits/printoperatorunit.h \
+    Source/PrintOperatorUnits/cppprintoperatorunit.h
