@@ -1,6 +1,2 @@
-#include "javaclassunit.h"
+#include "javamethodunit.h"
 
-JavaClassUnit::JavaClassUnit()
-{
-
-}

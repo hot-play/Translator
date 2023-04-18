@@ -5,18 +5,12 @@
 
 class CppMethodUnit : public MethodUnit {
 public:
-    enum Modifier {
-        STATIC = 1,
-        CONST = 1 << 1,
-        VIRTUAL = 1 << 2
-    };
-public:
-    CppMethodUnit( const std::string& name, const std::string& returnType, Flags flags ) :
+    CppMethodUnit(const std::string& name, const std::string& returnType, Flags flags) :
         m_name( name ),
         m_returnType( returnType ),
         m_flags( flags ) { }
 
-    void add( const std::shared_ptr< Unit >& unit, Flags /* flags */ = 0 ) {
+    void add(const UnitPtr& unit, Flags /* flags */ = 0) {
         m_body.push_back( unit );
     }
 
@@ -43,7 +37,7 @@ private:
     std::string m_name;
     std::string m_returnType;
     Flags m_flags;
-    std::vector<std::shared_ptr<Unit>> m_body;
+    std::vector<UnitPtr> m_body;
 };
 
 #endif // CPPMETHODUNIT_H

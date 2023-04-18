@@ -1,23 +1,15 @@
 #ifndef CSCLASSUNIT_H
 #define CSCLASSUNIT_H
 
-
 #include<Source/ClassUnits/classunit.h>
 
-class CppClassUnit : public ClassUnit
+class CsClassUnit : public ClassUnit
 {
 public:
-    enum AccessModifier {
-        PUBLIC,
-        PROTECTED,
-        PRIVATE
-    };
-    static const std::vector<std::string> ACCESS_MODIFIERS;
-public:
-    explicit CppClassUnit(const std::string& name) : m_name(name) {
+    explicit CsClassUnit(const std::string& name) : m_name(name) {
         m_fields.resize( ACCESS_MODIFIERS.size());
     }
-    void add(const std::shared_ptr<Unit>& unit, Flags flags) {
+    void add(const UnitPtr& unit, Flags flags) {
 
         int accessModifier = PRIVATE;
 
@@ -44,7 +36,7 @@ public:
     }
 private:
     std::string m_name;
-    using Fields = std::vector<std::shared_ptr<Unit>>;
+    using Fields = std::vector<UnitPtr>;
     std::vector< Fields > m_fields;
 };
 

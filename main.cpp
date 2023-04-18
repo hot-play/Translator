@@ -2,44 +2,47 @@
 #include <iostream>
 #include <memory>
 #include <Source/unit.h>
-#include <Source/ClassUnits/cppclassunit.h>
-#include <Source/MethodUnits/cppmethodunit.h>
-#include <Source/PrintOperatorUnits/cppprintoperatorunit.h>
+#include <Source/Factories/factory.h>
+#include <Source/Factories/cppfactory.h>
+#include <Source/Factories/csfactory.h>
+#include <Source/Factories/javafactory.h>
 
-const std::vector<std::string> CppClassUnit::ACCESS_MODIFIERS = { "public", "protected", "private" };
+#include <Source/ClassUnits/classunit.h>
+#include <Source/MethodUnits/methodunit.h>
 
-std::string generateProgram(QString language) {
-    ClassUnit * myClass = new CppClassUnit("MyClass");
+const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS = { "public", "protected", "private" };
+
+Factory * generateFactory(std::string language) {
     if (language == "cpp") {
-        myClass = new CppClassUnit("MyClass");
-        myClass->add(std::make_shared<CppMethodUnit>("testFunc1", "void", 0), CppClassUnit::PUBLIC);
-        myClass->add(std::make_shared<CppMethodUnit>("testFunc2", "void", CppMethodUnit::STATIC), CppClassUnit::PRIVATE);
-        myClass->add(std::make_shared<CppMethodUnit>("testFunc3", "void", CppMethodUnit::VIRTUAL | CppMethodUnit::CONST), CppClassUnit::PUBLIC);
-        auto method = std::make_shared<CppMethodUnit>("testFunc4", "void", CppMethodUnit::STATIC);
-        method->add( std::make_shared<CppPrintOperatorUnit>(R"(Hello, world!\n)"));
-        myClass->add( method, CppClassUnit::PROTECTED );
-        return myClass->compile();
+        return new CppFactory();
+    } else if (language == "cs") {
+        return new CsFactory();
+    } else if (language == "java") {
+        return new JavaFactory();
+    } else {
+        return nullptr;
     }
-//    if (language == "cs") {
-//        myClass = new CsClassUnit("MyClass");
-//        myClass->add(std::make_shared<CppMethodUnit>("testFunc1", "void", 0), CppClassUnit::PUBLIC);
-//        myClass->add(std::make_shared<CppMethodUnit>("testFunc2", "void", CppMethodUnit::STATIC), CppClassUnit::PRIVATE);
-//        myClass->add(std::make_shared<CppMethodUnit>("testFunc3", "void", CppMethodUnit::VIRTUAL | CppMethodUnit::CONST), CppClassUnit::PUBLIC);
-//        auto method = std::make_shared<CppMethodUnit>("testFunc4", "void", CppMethodUnit::STATIC);
-//        method->add( std::make_shared<CppPrintOperatorUnit>(R"(Hello, world!\n)"));
-//        myClass->add( method, CppClassUnit::PROTECTED );
-//        return myClass->compile();
-//    }
-//    if (language == "java") {
-//        myClass = new JavaClassUnit("MyClass");
-//        myClass->add(std::make_shared<CppMethodUnit>("testFunc1", "void", 0), CppClassUnit::PUBLIC);
-//        myClass->add(std::make_shared<CppMethodUnit>("testFunc2", "void", CppMethodUnit::STATIC), CppClassUnit::PRIVATE);
-//        myClass->add(std::make_shared<CppMethodUnit>("testFunc3", "void", CppMethodUnit::VIRTUAL | CppMethodUnit::CONST), CppClassUnit::PUBLIC);
-//        auto method = std::make_shared<CppMethodUnit>("testFunc4", "void", CppMethodUnit::STATIC);
-//        method->add( std::make_shared<CppPrintOperatorUnit>(R"(Hello, world!\n)"));
-//        myClass->add( method, CppClassUnit::PROTECTED );
-//        return myClass->compile();
-//    }
+}
+
+std::string generateProgram(std::string language) {
+    auto factory = generateFactory(language);
+
+    UnitPtr myClass = factory->createClass("MyClass");
+
+    UnitPtr method = factory->createMethod("testFunc1", "void", 0);
+    myClass->add(method, ClassUnit::PUBLIC);
+
+    method = factory->createMethod("testFunc2", "void", MethodUnit::STATIC);
+    myClass->add(method, ClassUnit::PRIVATE);
+
+    method = factory->createMethod("testFunc3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST);
+    myClass->add(method, ClassUnit::PUBLIC);
+
+    method = factory->createMethod("testFunc4", "void", MethodUnit::STATIC);
+    auto printOperator = factory->createPrintOperator(R"(Hello, world!\n)");
+    method->add(printOperator, 0);
+    myClass->add(method, ClassUnit::PROTECTED);
+    return myClass->compile();
 }
 
 int main(int argc, char *argv[])
