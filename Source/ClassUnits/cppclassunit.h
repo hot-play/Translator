@@ -21,8 +21,8 @@ public:
     std::string compile( unsigned int level = 0 ) const {
         std::string result = generateShift(level) + "class " + m_name + " {\n";
 
-        for( size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i ) {
-            if (m_fields[ i ].empty()) {
+        for(size_t i = 0; i < ACCESS_MODIFIERS.size(); ++i) {
+            if (m_fields[i].empty()) {
                 continue;
             }
             result += ACCESS_MODIFIERS[ i ] + ":\n";

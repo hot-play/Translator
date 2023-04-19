@@ -10,20 +10,20 @@ public:
         m_returnType( returnType ),
         m_flags( flags ) { }
 
-    void add(const UnitPtr& unit, Flags /* flags */ = 0) {
-        m_body.push_back( unit );
+    void add(const UnitPtr& unit, Flags flags) {
+        m_body.push_back(unit);
     }
 
     std::string compile(unsigned int level = 0) const {
         std::string result = generateShift( level );
-        if( m_flags & STATIC ) {
+        if(m_flags & STATIC) {
             result += "static ";
-        } else if( m_flags & VIRTUAL ) {
+        } else if(m_flags & VIRTUAL) {
             result += "virtual ";
         }
         result += m_returnType + " ";
         result += m_name + "()";
-        if( m_flags & CONST ) {
+        if(m_flags & CONST) {
             result += " const";
         }
         result += " {\n";

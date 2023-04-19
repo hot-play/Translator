@@ -16,10 +16,18 @@ public:
 
     std::string compile( unsigned int level = 0 ) const {
         std::string result = generateShift( level );
-        if( m_flags & STATIC ) {
+        if (m_flags & STATIC) {
             result += "static ";
-        } else if( m_flags & VIRTUAL ) {
+        } else if (m_flags & VIRTUAL) {
             result += "virtual ";
+        } else if (m_flags & FINAL) {
+            result += "final ";
+        } else if (m_flags & ABSTRACT) {
+            result += "abstract ";
+        } else if (m_flags & SYNCHRONIZED) {
+            result += "synchronized ";
+        } else if (m_flags & VOLATILE) {
+            result += "volatile ";
         }
         result += m_returnType + " ";
         result += m_name + "()";
