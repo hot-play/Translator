@@ -15,10 +15,13 @@ public:
         VOLATILE = 1 << 6
     };
 public:
-    virtual void add(const UnitPtr&, Flags = 0) {
-        throw std::runtime_error( "Not supported Method" );
-    }
+    virtual void add(const UnitPtr&, Flags = 0) = 0;
     virtual std::string compile(unsigned int level = 0) const = 0;
+protected:
+    std::string methodName;
+    std::string returnType;
+    Flags flags;
+    std::vector<UnitPtr> body;
 };
 
 #endif // METHODUNIT_H

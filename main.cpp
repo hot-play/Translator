@@ -12,6 +12,7 @@
 
 const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS =
 {"public", "protected", "private", "private protected", "file", "internal", "protecred iternal"};
+
 Factory * generateFactory(std::string language) {
     if (language == "cpp") {
         return new CppFactory();
@@ -48,8 +49,8 @@ std::string generateProgram(std::string language) {
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    std::cout << "CPP :" << std::endl;
-    std::cout << generateProgram("java") << std::endl;
+//    std::cout << "CPP :" << std::endl;
+    std::cout << generateProgram("cpp") << std::endl;
 //    std::cout << "-------------------------------" << std::endl;
 //    std::cout << "CS :" << std::endl;
 //    std::cout << generateProgram("cs") << std::endl;

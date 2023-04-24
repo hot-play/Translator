@@ -31,7 +31,9 @@ SOURCES += main.cpp \
     Source/Factories/factory.cpp \
     Source/Factories/cppfactory.cpp \
     Source/Factories/csfactory.cpp \
-    Source/Factories/javafactory.cpp
+    Source/Factories/javafactory.cpp \
+    Source/MethodUnits/javamethodunit.cpp \
+    Source/PrintOperatorUnits/javaprintoperatorunit.cpp
 
 HEADERS += \
     Source/unit.h \
@@ -46,8 +48,9 @@ HEADERS += \
     Source/PrintOperatorUnits/printoperatorunit.h \
     Source/PrintOperatorUnits/cppprintoperatorunit.h \
     Source/PrintOperatorUnits/csprintoperatorunit.h \
-    Source/PrintOperatorUnits/javaprintoperatorunit.h \
     Source/Factories/factory.h \
     Source/Factories/cppfactory.h \
     Source/Factories/csfactory.h \
-    Source/Factories/javafactory.h
+    Source/Factories/javafactory.h \
+    Source/MethodUnits/javamethodunit.h \
+    Source/PrintOperatorUnits/javaprintoperatorunit.h

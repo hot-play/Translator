@@ -17,10 +17,12 @@ public:
     };
     static const std::vector<std::string> ACCESS_MODIFIERS;
 public:
-    virtual void add(const UnitPtr&, Flags) {
-        throw std::runtime_error( "Not supported Class" );
-    }
+    virtual void add(const UnitPtr&, Flags) = 0;
     virtual std::string compile(unsigned int level = 0) const = 0;
+protected:
+    std::string className;
+    using Fields = std::vector<UnitPtr>;
+    std::vector< Fields > fields;
 };
 
 #endif // CLASSUNIT_H

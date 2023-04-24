@@ -5,12 +5,12 @@
 
 class JavaPrintOperatorUnit : public PrintOperatorUnit {
 public:
-    explicit JavaPrintOperatorUnit(const std::string& text) : m_text(text) { }
-    std::string compile(unsigned int level = 0) const {
-        return generateShift(level) + "System.out.print( \"" + m_text + "\" )";
+    explicit JavaPrintOperatorUnit(const std::string& t) {
+        text = t;
     }
-private:
-    std::string m_text;
+    std::string compile(unsigned int level = 0) const override {
+        return generateShift(level) + "System.out.print( \"" + text + "\" );\n";
+    }
 };
 
 #endif // JAVAPRINTOPERATORUNIT_H

@@ -12,15 +12,9 @@ class CppFactory : public Factory
 public:
     CppFactory() = default;
     ~CppFactory() = default;
-    UnitPtr createClass(const std::string& name) const override {
-        return std::make_shared<CppClassUnit>(name);
-    }
-    UnitPtr createMethod(const std::string& name, const std::string& returnType, Unit::Flags flags) const override {
-        return std::make_shared<CppMethodUnit>(name, returnType, flags);
-    }
-    UnitPtr createPrintOperator(const std::string& text) const override {
-        return std::make_shared<CppPrintOperatorUnit>(text);
-    }
+    UnitPtr createClass(const std::string& name) const override;
+    UnitPtr createMethod(const std::string& name, const std::string& returnType, Unit::Flags flags) const override;
+    UnitPtr createPrintOperator(const std::string& text) const override;
 };
 
 #endif // CPPFACTORY_H
