@@ -11,7 +11,7 @@
 #include <Source/MethodUnits/methodunit.h>
 
 const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS =
-{"public", "protected", "private", "private protected", "file", "internal", "protecred iternal"};
+{"public", "protected", "private", "private protected", "file", "internal", "protected iternal"};
 
 Factory * generateFactory(std::string language) {
     if (language == "cpp") {
