@@ -43,19 +43,20 @@ std::string generateProgram(std::string language) {
     auto printOperator = factory->createPrintOperator(R"(Hello, world!\n)");
     method->add(printOperator, 0);
     myClass->add(method, ClassUnit::PROTECTED);
+    delete factory;
     return myClass->compile();
 }
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-//    std::cout << "CPP :" << std::endl;
+    std::cout << "C++ :" << std::endl;
     std::cout << generateProgram("cpp") << std::endl;
 //    std::cout << "-------------------------------" << std::endl;
-//    std::cout << "CS :" << std::endl;
+//    std::cout << "C# :" << std::endl;
 //    std::cout << generateProgram("cs") << std::endl;
 //    std::cout << "-------------------------------" << std::endl;
-//    std::cout << "JAVA :" << std::endl;
+//    std::cout << "Java :" << std::endl;
 //    std::cout << generateProgram("java") << std::endl;
 //    std::cout << std::endl;
     return a.exec();
