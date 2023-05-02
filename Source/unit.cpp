@@ -1,7 +1,7 @@
 #include "unit.h"
 
 void Unit::add(const UnitPtr &, Unit::Flags) {
-    throw std::runtime_error( "Not supported" );
+    throw std::runtime_error("Object is not initialized");
 }
 
 std::string Unit::generateShift(unsigned int level) const

@@ -1,6 +1,5 @@
 #include <QCoreApplication>
 #include <iostream>
-#include <memory>
 #include <Source/unit.h>
 #include <Source/Factories/factory.h>
 #include <Source/Factories/cppfactory.h>
@@ -14,6 +13,7 @@ const std::vector<std::string> ClassUnit::ACCESS_MODIFIERS =
 {"public", "protected", "private", "private protected", "file", "internal", "protected iternal"};
 
 Factory * generateFactory(std::string language) {
+    // По строке смотрим фабрику какого языка нам нужно использовать
     if (language == "cpp") {
         return new CppFactory();
     } else if (language == "cs") {
@@ -21,30 +21,36 @@ Factory * generateFactory(std::string language) {
     } else if (language == "java") {
         return new JavaFactory();
     } else {
-        return nullptr;
+        return new Factory();
     }
 }
 
 std::string generateProgram(std::string language) {
-    auto factory = generateFactory(language);
+    try {
+        Factory * factory = generateFactory(language);
+        UnitPtr myClass = factory->createClass("MyClass");
 
-    UnitPtr myClass = factory->createClass("MyClass");
+        UnitPtr method = factory->createMethod("testFunc1", "void", 0);
+        myClass->add(method, ClassUnit::PUBLIC);
 
-    UnitPtr method = factory->createMethod("testFunc1", "void", 0);
-    myClass->add(method, ClassUnit::PUBLIC);
+        method = factory->createMethod("testFunc2", "void", MethodUnit::STATIC);
+        myClass->add(method, ClassUnit::PRIVATE);
 
-    method = factory->createMethod("testFunc2", "void", MethodUnit::STATIC);
-    myClass->add(method, ClassUnit::PRIVATE);
+        method = factory->createMethod("testFunc3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST);
+        myClass->add(method, ClassUnit::PUBLIC);
 
-    method = factory->createMethod("testFunc3", "void", MethodUnit::VIRTUAL | MethodUnit::CONST);
-    myClass->add(method, ClassUnit::PUBLIC);
+        method = factory->createMethod("testFunc4", "void", MethodUnit::STATIC);
+        auto printOperator = factory->createPrintOperator(R"(Hello, world!\n)");
+        method->add(printOperator, 0);
+        myClass->add(method, ClassUnit::PROTECTED);
 
-    method = factory->createMethod("testFunc4", "void", MethodUnit::STATIC);
-    auto printOperator = factory->createPrintOperator(R"(Hello, world!\n)");
-    method->add(printOperator, 0);
-    myClass->add(method, ClassUnit::PROTECTED);
-    delete factory;
-    return myClass->compile();
+        delete factory;
+        return myClass->compile();
+    }
+    // В случае неподдерживаемого языка, будет вызов ошибки
+    catch (const std::runtime_error& e) {
+        std::cerr << e.what();
+    }
 }
 
 int main(int argc, char *argv[])
