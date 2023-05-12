@@ -14,4 +14,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    Source/unit.cpp \
+    Source/ClassUnits/classunit.cpp \
+    Source/ClassUnits/cppclassunit.cpp \
+    Source/ClassUnits/csclassunit.cpp \
+    Source/ClassUnits/javaclassunit.cpp \
+    Source/MethodUnits/methodunit.cpp \
+    Source/MethodUnits/cppmethodunit.cpp \
+    Source/MethodUnits/csmethodunit.cpp \
+    Source/MethodUnits/javamethodunit.cpp \
+    Source/PrintOperatorUnits/printoperatorunit.cpp \
+    Source/PrintOperatorUnits/cppprintoperatorunit.cpp \
+    Source/PrintOperatorUnits/csprintoperatorunit.cpp \
+    Source/PrintOperatorUnits/javaprintoperatorunit.cpp \
+    Source/Factories/factory.cpp \
+    Source/Factories/cppfactory.cpp \
+    Source/Factories/csfactory.cpp \
+    Source/Factories/javafactory.cpp \
+    Source/MethodUnits/javamethodunit.cpp \
+    Source/PrintOperatorUnits/javaprintoperatorunit.cpp
+
+HEADERS += \
+    Source/unit.h \
+    Source/ClassUnits/classunit.h \
+    Source/ClassUnits/cppclassunit.h \
+    Source/ClassUnits/csclassunit.h \
+    Source/ClassUnits/javaclassunit.h \
+    Source/MethodUnits/methodunit.h \
+    Source/MethodUnits/cppmethodunit.h \
+    Source/MethodUnits/csmethodunit.h \
+    Source/MethodUnits/javamethodunit.h \
+    Source/PrintOperatorUnits/printoperatorunit.h \
+    Source/PrintOperatorUnits/cppprintoperatorunit.h \
+    Source/PrintOperatorUnits/csprintoperatorunit.h \
+    Source/Factories/factory.h \
+    Source/Factories/cppfactory.h \
+    Source/Factories/csfactory.h \
+    Source/Factories/javafactory.h \
+    Source/MethodUnits/javamethodunit.h \
+    Source/PrintOperatorUnits/javaprintoperatorunit.h
