@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     std::cout << "C++ :" << std::endl;
-    std::cout << generateProgram("cpp") << std::endl;
+    std::cout << generateProgram("qt") << std::endl;
 //    std::cout << "-------------------------------" << std::endl;
 //    std::cout << "C# :" << std::endl;
 //    std::cout << generateProgram("cs") << std::endl;
